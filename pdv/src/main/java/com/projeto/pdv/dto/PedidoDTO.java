@@ -3,6 +3,7 @@ package com.projeto.pdv.dto;
 import java.util.List;
 
 import com.projeto.pdv.model.Cliente;
+import com.projeto.pdv.model.Pedido;
 import com.projeto.pdv.model.Produto;
 
 import lombok.AllArgsConstructor;
@@ -17,5 +18,11 @@ import lombok.Setter;
 public class PedidoDTO {
     private Long id;
     private Cliente cliente;
-    private List<Produto> lista;
+    private List<Produto> listaProdutos;
+
+    public PedidoDTO(Pedido p){
+        this.id = p.getId();
+        this.cliente = p.getCliente();
+        this.listaProdutos = p.getListaProdutos();
+    }
 }

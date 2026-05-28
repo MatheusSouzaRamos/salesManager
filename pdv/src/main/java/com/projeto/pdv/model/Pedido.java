@@ -19,5 +19,5 @@ import lombok.Setter;
 public class Pedido {
     private Long id;
     private Cliente cliente;
-    private List<Produto> lista;
+    private List<Produto> listaProdutos;
 }
