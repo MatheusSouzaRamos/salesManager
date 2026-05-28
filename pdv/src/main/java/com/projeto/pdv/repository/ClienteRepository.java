@@ -1,7 +1,11 @@
 package com.projeto.pdv.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ClienteRepository extends JpaRepository<ClienteRepository, Long>{
-    
+import com.projeto.pdv.model.Cliente;
+
+public interface ClienteRepository extends JpaRepository<Cliente, Long>{
+    List<Cliente> findByNomeContainingIgnoreCase(String nome);
 }

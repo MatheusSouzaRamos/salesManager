@@ -61,6 +61,7 @@ public class ProdutoService {
     @Transactional
     public ProdutoDTO update(Long id, ProdutoDTO dto){
         Produto entity = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Não encontrado"));
+        // entity.setId(dto.getId());
         entity.setNome(dto.getNome());
         entity.setValor(dto.getValor());
         entity = repository.save(entity);
