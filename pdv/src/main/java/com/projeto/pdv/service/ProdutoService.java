@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.projeto.pdv.dto.ProdutoDTO;
 import com.projeto.pdv.model.Produto;
 import com.projeto.pdv.repository.ProdutoRepository;
+import com.projeto.pdv.service.exceptions.DatabaseIntegrityException;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -33,8 +34,18 @@ public class ProdutoService {
     @Transactional(readOnly = true)
     public ProdutoDTO findById(Long id){
         Optional<Produto> obj = repository.findById(id);
-        Produto produto = obj.orElseThrow(() -> new EntityNotFoundException());
+        Produto produto = obj.orElseThrow(() -> new EntityNotFoundException("Não encontrado."));
         return new ProdutoDTO(produto);
+    }
+
+    @Transactional(readOnly = true)
+    public List<ProdutoDTO> findByNome(String nome){
+        List<Produto> list = repository.findByNomeContainingIgnoreCase(nome);
+        List<ProdutoDTO> dto = new ArrayList<>();
+        for(Produto p: list){
+            dto.add(new ProdutoDTO(p));
+        }
+        return dto;
     }
 
     @Transactional
@@ -45,6 +56,25 @@ public class ProdutoService {
         entity.setValor(entity.getValor());
         entity = repository.save(entity);
         return new ProdutoDTO(entity);
+    }
+
+    @Transactional
+    public ProdutoDTO update(Long id, ProdutoDTO dto){
+        Produto entity = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Não encontrado"));
+        entity.setNome(dto.getNome());
+        entity.setValor(dto.getValor());
+        entity = repository.save(entity);
+        return new ProdutoDTO(entity);
+    }
+
+    @Transactional
+    public void delete(Long id){
+        try{
+            repository.deleteById(id);
+        }
+        catch(Exception e){
+            throw new DatabaseIntegrityException("Integridade Violada");
+        }
     }
 
 }
