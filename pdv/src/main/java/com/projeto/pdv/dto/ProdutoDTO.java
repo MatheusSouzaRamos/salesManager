@@ -1,7 +1,5 @@
 package com.projeto.pdv.dto;
 
-import java.time.LocalDate;
-
 import com.projeto.pdv.model.Produto;
 
 import lombok.AllArgsConstructor;
