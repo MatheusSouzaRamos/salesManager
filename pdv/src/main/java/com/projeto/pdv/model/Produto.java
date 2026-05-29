@@ -1,5 +1,7 @@
 package com.projeto.pdv.model;
 
+import com.projeto.pdv.dto.ProdutoDTO;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -17,4 +19,10 @@ public class Produto {
     private Long id;
     private String nome;
     private Double valor;
+
+    public Produto(ProdutoDTO p){
+        this.id = p.getId();
+        this.nome = p.getNome();
+        this.valor = p.getValor();
+    }
 }

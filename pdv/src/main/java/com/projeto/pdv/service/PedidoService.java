@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.projeto.pdv.dto.PedidoDTO;
+import com.projeto.pdv.dto.ProdutoDTO;
 import com.projeto.pdv.model.Pedido;
+import com.projeto.pdv.model.Produto;
 import com.projeto.pdv.repository.PedidoRepository;
 import com.projeto.pdv.service.exceptions.DatabaseIntegrityException;
 import com.projeto.pdv.service.exceptions.EntityNotFoundException;
@@ -61,5 +63,22 @@ public class PedidoService {
         }catch(Exception e){
             throw new DatabaseIntegrityException("Integridade violada.");
         }
+    }
+
+    @Transactional
+    public PedidoDTO updateAdicionarProduto(Long id, ProdutoDTO produtoDto){
+        Pedido entity = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Não encontrado."));
+        Produto produto = new Produto(produtoDto);
+        entity.getListaProdutos().add(produto);
+        entity = repository.save(entity);
+        return new PedidoDTO(entity);
+    }
+
+    @Transactional PedidoDTO updateRemoverProduto(Long id, ProdutoDTO produtoDto){
+        Pedido entity = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Não encontrado."));
+        Produto produto = new Produto(produtoDto);
+        entity.getListaProdutos().remove(produto);
+        entity = repository.save(entity);
+        return new PedidoDTO(entity);
     }
 }

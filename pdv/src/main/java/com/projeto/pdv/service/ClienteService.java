@@ -70,6 +70,7 @@ public class ClienteService {
         return new ClienteDTO(entity);
     }
 
+    @Transactional
     public void delete(Long id){
         try{
             repository.deleteById(id);
