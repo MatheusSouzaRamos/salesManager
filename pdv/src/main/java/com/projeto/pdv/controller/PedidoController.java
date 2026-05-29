@@ -1,10 +1,8 @@
 package com.projeto.pdv.controller;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,11 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.projeto.pdv.dto.PedidoDTO;
-import com.projeto.pdv.dto.ProdutoDTO;
-import com.projeto.pdv.model.Produto;
 import com.projeto.pdv.service.PedidoService;
-
-import jakarta.persistence.EntityNotFoundException;
 
 @RestController
 @RequestMapping(value = "/pedidos")
