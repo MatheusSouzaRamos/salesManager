@@ -1,5 +1,6 @@
 package com.projeto.pdv.model;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -39,4 +40,6 @@ public class Pedido {
         inverseJoinColumns = @JoinColumn(name= "produto_id")
     )
     private List<Produto> listaProdutos;
+
+    private LocalDate data;
 }
