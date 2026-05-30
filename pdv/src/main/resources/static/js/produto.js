@@ -45,3 +45,50 @@ function cadastrarProduto(){
         console.log("Erro: ", erro);
     })
 }
+
+function alterarProduto(){
+    let idAlterar = document.getElementById("idEditarProduto").value;
+    let nomeAlterar = document.getElementById("nomeEditarProduto").value;
+    let valorAlterar = document.getElementById("valorEditarProduto").value;
+
+    fetch(`http://localhost:8080/produtos/${idAlterar}`, {
+        method: "PUT",
+        headers: {
+            "Accept": "application/json",
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+            nome: nomeAlterar,
+            valor: valorAlterar
+        })
+    })
+    .then(res => {
+        if(!res.ok) throw new Error("Erro ao alterar produto");
+        return res.json();
+    })
+    .then(data => {
+        console.log(data)
+    })
+    .catch(erro => {
+        console.log("Erro: ", erro)
+    })
+}
+
+function deletarProduto(){
+    let idDeletar = document.getElementById("idDeletarProduto").value;
+
+    fetch(`http://localhost:8080/produtos/${idDeletar}`, {
+        method: "DELETE",
+        headers: {
+            "Accept": "application/json",
+            "Content-type": "application/json"
+        }
+    })
+    .then(res => {
+        if(!res.ok) throw new Error("Erro ao deletar produto.");
+        return;
+    })
+    .catch(erro => {
+        console.log("Erro: ", erro)
+    })
+}
