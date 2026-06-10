@@ -32,5 +32,6 @@ public class Cliente {
 
     private String cpf;
 
+    @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos;
 }
