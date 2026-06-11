@@ -17,7 +17,6 @@ public class ProdutoDTO {
 
     private Double valor;
 
-    private Long estoque;
 
     private List<Pedido> pedidos;
 
@@ -27,7 +26,6 @@ public class ProdutoDTO {
         this.id = produto.getId();
         this.nome = produto.getNome();
         this.valor = produto.getValor();
-        this.estoque = produto.getEstoque();
         this.pedidos = produto.getPedidos();
     }
 }

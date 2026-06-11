@@ -54,7 +54,6 @@ public class ProdutoService {
         
         entity.setNome(dto.getNome());
         entity.setValor(dto.getValor());
-        entity.setEstoque(dto.getEstoque());
         
         entity = repository.save(entity);
         return new ProdutoDTO(entity);
@@ -65,7 +64,6 @@ public class ProdutoService {
         Produto entity = repository.findById(id).orElseThrow(()-> new EntityNotFoundException("Nao encontrado"));
         entity.setNome(dto.getNome());
         entity.setValor(dto.getValor());
-        entity.setEstoque(dto.getEstoque());
         entity = repository.save(entity);
         return new ProdutoDTO(entity);
     }

@@ -30,8 +30,6 @@ public class Produto {
 
     private Double valor;
 
-    private Long estoque;
-
     @ManyToMany(mappedBy = "produtos")
     private List<Pedido> pedidos;
 }
