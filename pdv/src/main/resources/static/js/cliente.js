@@ -1,5 +1,5 @@
-function buscarTodosProdutos(){
-    fetch("http://localhost:8080/produtos", {
+function buscarTodosClientes(){
+    fetch("http://localhost:8080/clientes", {
         method: "GET",
         headers: {
             "Accept" : "application/json",
@@ -18,12 +18,12 @@ function buscarTodosProdutos(){
     })
 }
 
-function buscarProdutoId(){
-    const idBuscar = document.getElementById("idbuscarproduto").value;
+function buscarClienteId(){
+    const idBuscar = document.getElementById("idbuscarcliente").value;
 
     // if idBuscar vazio {......}
 
-    fetch(`http://localhost:8080/produtos/${idBuscar}`, {
+    fetch(`http://localhost:8080/clientes/${idBuscar}`, {
         method: "GET",
         headers: {
             "Accept" : "application/json",
@@ -42,12 +42,12 @@ function buscarProdutoId(){
     })
 }
 
-function buscarProdutoNome(){
-    const nomeBuscar = document.getElementById("nomebuscarproduto").value;
+function buscarClientesNome(){
+    const nomeBuscar = document.getElementById("nomebuscarcliente").value;
 
     // if idBuscar vazio {......}
 
-    fetch(`http://localhost:8080/produtos/buscar/${nomeBuscar}`, {
+    fetch(`http://localhost:8080/clientes/buscar/${nomeBuscar}`, {
         method: "GET",
         headers: {
             "Accept" : "application/json",
@@ -66,11 +66,12 @@ function buscarProdutoNome(){
     })
 }
 
-function inserirProduto(){
-    const nomeInserir = document.getElementById("nomeinserirproduto").value;
-    const valorInserir = document.getElementById("valorinserirproduto").value;
+function inserirCliente(){
+    const nomeInserir = document.getElementById("nomeinserircliente").value;
+    const telefoneInserir = document.getElementById("telefoneinserircliente").value;
+    const cpfInserir = document.getElementById("cpfinserircliente").value;
 
-    fetch("http://localhost:8080/produtos", {
+    fetch("http://localhost:8080/clientes", {
         method: "POST",
         headers: {
             "Accept" : "application/json",
@@ -78,7 +79,8 @@ function inserirProduto(){
         },
         body: JSON.stringify({
             nome: nomeInserir,
-            valor: valorInserir
+            telefone: telefoneInserir,
+            cpf: cpfInserir
         })
     })
     .then(res => {
@@ -93,12 +95,13 @@ function inserirProduto(){
     })
 }
 
-function atualizarProduto(){
-    const idAtualizar = document.getElementById("ideditarproduto").value;
-    const nomeAtualizar = document.getElementById("nomeeditarproduto").value;
-    const valorAtualizar = document.getElementById("valoreditarproduto").value;
+function atualizarCliente(){
+    const idAtualizar = document.getElementById("ideditarcliente").value;
+    const nomeAtualizar = document.getElementById("nomeeditarcliente").value;
+    const telefoneAtualizar = document.getElementById("telefoneeditarcliente").value;
+    const cpfAtualizar = document.getElementById("cpfeditarcliente").value;
 
-    fetch(`http://localhost:8080/produtos/${idAtualizar}`, {
+    fetch(`http://localhost:8080/clientes/${idAtualizar}`, {
         method: "PUT",
         headers: {
             "Accept" : "application/json",
@@ -106,7 +109,8 @@ function atualizarProduto(){
         },
         body: JSON.stringify({
             nome: nomeAtualizar,
-            valor: valorAtualizar
+            telefone: telefoneAtualizar,
+            cpf: cpfAtualizar
         })
     })
     .then(res => {

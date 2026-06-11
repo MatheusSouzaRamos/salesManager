@@ -96,7 +96,7 @@ function inserirProduto(){
 function atualizarProduto(){
     const idAtualizar = document.getElementById("ideditarproduto").value;
     const nomeAtualizar = document.getElementById("nomeeditarproduto").value;
-    const valorAtualizarr = document.getElementById("valoreditarproduto").value;
+    const valorAtualizar = document.getElementById("valoreditarproduto").value;
 
     fetch(`http://localhost:8080/produtos/${idAtualizar}`, {
         method: "PUT",
@@ -106,7 +106,7 @@ function atualizarProduto(){
         },
         body: JSON.stringify({
             nome: nomeAtualizar,
-            valor: valorAtualizarr
+            valor: valorAtualizar
         })
     })
     .then(res => {
