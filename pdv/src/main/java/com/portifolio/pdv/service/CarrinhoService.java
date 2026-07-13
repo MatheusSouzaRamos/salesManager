@@ -25,8 +25,8 @@ public class CarrinhoService {
         return item;
     }
 
-    public void removerItem(ItemCarrinho item){
-        carrinho.removerItem(item);
+    public void removerItem(Long id){
+        carrinho.removerItem(id);
     }
 
     public void limparCarrinho(){
