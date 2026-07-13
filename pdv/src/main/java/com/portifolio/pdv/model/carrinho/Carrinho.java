@@ -16,11 +16,22 @@ public class Carrinho {
     private List<ItemCarrinho> itens = new ArrayList<>();
 
     public void adicionarItem(ItemCarrinho item){
+        for(ItemCarrinho i : itens){
+            if(item.getId().equals(i.getId())){
+                i.setQuantidade(i.getQuantidade() + item.getQuantidade());
+                return;
+            }
+        }
         itens.add(item);
     }
 
-    public void removerItem(ItemCarrinho item){
-        itens.remove(item);
+    public void removerItem(Long id){
+        for(ItemCarrinho i : itens){
+            if(i.getId().equals(id)){
+                itens.remove(i);
+                return;
+            }
+        }
     }
 
     public void limpar(){

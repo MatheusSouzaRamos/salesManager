@@ -12,6 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ItemCarrinho {
+    private Long Id;
     private Produto produto;
     private int quantidade;
 }
