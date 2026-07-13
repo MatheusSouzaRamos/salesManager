@@ -2,6 +2,8 @@ package com.portifolio.pdv.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,9 +34,11 @@ public class Pedido {
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
+    @JsonIgnore
     private Cliente cliente;
 
     @ManyToMany
+    @JsonIgnore
     @JoinTable(
         name = "pedido_produto",
         joinColumns = @JoinColumn(name = "pedido_id"),

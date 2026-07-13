@@ -2,6 +2,8 @@ package com.portifolio.pdv.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,5 +33,6 @@ public class Produto {
     private Double valor;
 
     @ManyToMany(mappedBy = "produtos")
+    @JsonIgnore
     private List<Pedido> pedidos;
 }
