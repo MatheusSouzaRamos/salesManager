@@ -1,0 +1,29 @@
+package com.portifolio.pdv.model.carrinho;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+public class Carrinho {
+    private List<ItemCarrinho> itens = new ArrayList<>();
+
+    public void adicionarItem(ItemCarrinho item){
+        itens.add(item);
+    }
+
+    public void removerItem(ItemCarrinho item){
+        itens.remove(item);
+    }
+
+    public void limpar(){
+        itens.clear();
+    }
+}
