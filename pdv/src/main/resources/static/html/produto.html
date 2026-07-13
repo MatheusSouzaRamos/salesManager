@@ -6,23 +6,33 @@
     <title>Produto</title>
 </head>
 <body>
+    <header>
+        <h1>Sales Manager</h1>
+    </header>
+    <nav>
+        <a href="pedido.html">Pedidos</a>
+        <a href="produto.html">Produtos</a>
+        <a href="cliente.html">Clientes</a>
+    </nav>
         
-    <button onclick="buscarTodosProdutos()">Todos</button>
-    <br>
-    <input type="number" placeholder="id" id="idbuscarproduto">
-    <button onclick="buscarProdutoId()">id</button>
-    <br>
-    <input type="text" placeholder="nome" id="nomebuscarproduto">
-    <button onclick="buscarProdutoNome()">buscar</button>
-    <br>
-    <input type="text" placeholder="nome" id="nomeinserirproduto">
-    <input type="number" placeholder="valor" id="valorinserirproduto">
-    <button onclick="inserirProduto()">inserir</button>
-    <br>
-    <input type="number" placeholder="ID" id="ideditarproduto">
-    <input type="text" placeholder="nome" id="nomeeditarproduto">
-    <input type="number" placeholder="valor" id="valoreditarproduto">
-    <button onclick="atualizarProduto()">atualizar</button>
+    <main>
+        <button onclick="buscarTodosProdutos()">Todos</button>
+        <br>
+        <input type="number" placeholder="id" id="idbuscarproduto">
+        <button onclick="buscarProdutoId()">id</button>
+        <br>
+        <input type="text" placeholder="nome" id="nomebuscarproduto">
+        <button onclick="buscarProdutoNome()">buscar</button>
+        <br>
+        <input type="text" placeholder="nome" id="nomeinserirproduto">
+        <input type="number" placeholder="valor" id="valorinserirproduto">
+        <button onclick="inserirProduto()">inserir</button>
+        <br>
+        <input type="number" placeholder="ID" id="ideditarproduto">
+        <input type="text" placeholder="nome" id="nomeeditarproduto">
+        <input type="number" placeholder="valor" id="valoreditarproduto">
+        <button onclick="atualizarProduto()">atualizar</button>
+    </main>
     
     <script src="../js/produto.js"></script>
 </body>
