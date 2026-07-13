@@ -17,3 +17,5 @@ function listarCarrinho(){
         console.log("Erro: ", erro);
     })
 }
+
+function

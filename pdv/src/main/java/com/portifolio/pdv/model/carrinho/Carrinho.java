@@ -17,7 +17,7 @@ public class Carrinho {
 
     public void adicionarItem(ItemCarrinho item){
         for(ItemCarrinho i : itens){
-            if(item.getId().equals(i.getId())){
+            if(item.getProduto().getId().equals(i.getProduto().getId())){
                 i.setQuantidade(i.getQuantidade() + item.getQuantidade());
                 return;
             }
@@ -27,7 +27,7 @@ public class Carrinho {
 
     public void removerItem(Long id){
         for(ItemCarrinho i : itens){
-            if(i.getId().equals(id)){
+            if(i.getProduto().getId().equals(id)){
                 itens.remove(i);
                 return;
             }
