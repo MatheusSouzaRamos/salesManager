@@ -12,6 +12,27 @@ function buscarTodosProdutos(){
     })
     .then(data => {
         console.log("Dados: ", data);
+        let tabela = document.getElementById("tabelaProdutos");
+
+        let linhas = "";
+        for(const el of data){
+            linhas + linhas + "<tr>"
+            linhas = linhas + `<td>${el.nome}</td>`
+            linhas = linhas + `<td>R$ ${el.valor}</td>`
+            linhas = linhas + "</tr>"
+        }
+        
+        tabela.innerHTML = `
+            <table>
+                <tr>
+                    <th>Nome</th>
+                    <th>Valor</th>
+                </tr>
+                ${linhas}
+            </table>
+
+        `;
+
     })
     .catch(erro => {
         console.log("Erro: ", erro)

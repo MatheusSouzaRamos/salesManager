@@ -12,6 +12,28 @@ function buscarTodosClientes(){
     })
     .then(data => {
         console.log("Dados: ", data);
+        let tabela = document.getElementById("tabelaClientes");
+
+        let linhas = "";
+        for(const el of data){
+            linhas + linhas + "<tr>"
+            linhas = linhas + `<td>${el.nome}</td>`
+            linhas = linhas + `<td>${el.telefone}</td>`
+            linhas = linhas + `<td>${el.cpf}</td>`
+            linhas = linhas + "</tr>"
+        }
+        
+        tabela.innerHTML = `
+            <table>
+                <tr>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>CPF</th>
+                </tr>
+                ${linhas}
+            </table>
+
+        `;
     })
     .catch(erro => {
         console.log("Erro: ", erro)
