@@ -24,15 +24,26 @@
         <br>
         <input type="text" placeholder="nome" id="nomebuscarproduto">
         <button onclick="buscarProdutoNome()">buscar</button>
-        <br>
-        <input type="text" placeholder="nome" id="nomeinserirproduto">
-        <input type="number" placeholder="valor" id="valorinserirproduto">
-        <button onclick="inserirProduto()">inserir</button>
-        <br>
-        <input type="number" placeholder="ID" id="ideditarproduto">
-        <input type="text" placeholder="nome" id="nomeeditarproduto">
-        <input type="number" placeholder="valor" id="valoreditarproduto">
-        <button onclick="atualizarProduto()">atualizar</button>
+
+
+
+        <div class="container">
+
+            <div>
+                <h3 style="margin-bottom: 35px;">Cadastro</h3>
+                <input type="text" placeholder="Nome" id="nomeinserirproduto">
+                <input type="number" placeholder="Valor" id="valorinserirproduto">
+                <button onclick="inserirProduto()">Cadastrar</button>
+            </div>
+
+            <div>
+                <h3>Edição</h3>
+                <input type="number" placeholder="ID" id="ideditarproduto">
+                <input type="text" placeholder="Novo nome" id="nomeeditarproduto">
+                <input type="number" placeholder="Novo  valor" id="valoreditarproduto">
+                <button onclick="atualizarProduto()">Editar</button>
+            </div>
+        </div>
     </main>
     
     <script src="../js/produto.js"></script>

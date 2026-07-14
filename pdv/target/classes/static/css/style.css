@@ -40,3 +40,51 @@ a:hover {
     transition-duration: 0.5s;
     border-radius: 50%;
 }
+
+.container {
+    /* background-color: red; */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 420px;
+    margin: auto;
+
+}
+
+.container div {
+    height: 200px;
+    width: 200px;
+    background-color: var(--cor1);
+    border-radius: 5px;
+}
+
+.container h3{
+    background-color: var(--cor2);
+    color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-weight: normal;
+    text-align: center;
+    padding: 1px;
+    margin-bottom: 20px;
+}
+
+.container input {
+    margin: auto;
+    display: block;
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.container button {
+    padding: 3px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    margin: auto;
+    display: block;
+    margin-top: 10px;
+}
