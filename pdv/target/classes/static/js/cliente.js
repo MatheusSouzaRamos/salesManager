@@ -17,6 +17,7 @@ function buscarTodosClientes(){
         let linhas = "";
         for(const el of data){
             linhas + linhas + "<tr>"
+            linhas = linhas + `<td>${el.id}</td>`
             linhas = linhas + `<td>${el.nome}</td>`
             linhas = linhas + `<td>${el.telefone}</td>`
             linhas = linhas + `<td>${el.cpf}</td>`
@@ -24,8 +25,10 @@ function buscarTodosClientes(){
         }
         
         tabela.innerHTML = `
+        <h2>Clientes</h2>
             <table>
                 <tr>
+                    <th>ID</th>
                     <th>Nome</th>
                     <th>Telefone</th>
                     <th>CPF</th>

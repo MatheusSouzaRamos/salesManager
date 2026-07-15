@@ -17,15 +17,18 @@ function buscarTodosProdutos(){
         let linhas = "";
         for(const el of data){
             linhas + linhas + "<tr>"
+            linhas = linhas + `<td>${el.id}</td>`
             linhas = linhas + `<td>${el.nome}</td>`
             linhas = linhas + `<td>R$ ${el.valor}</td>`
             linhas = linhas + "</tr>"
         }
         
         tabela.innerHTML = `
+        <h2>Produtos</h2>
             <table>
                 <tr>
-                    <th>Nome</th>
+                    <th>ID</th>
+                    <th>Produto</th>
                     <th>Valor</th>
                 </tr>
                 ${linhas}
@@ -39,52 +42,96 @@ function buscarTodosProdutos(){
     })
 }
 
-function buscarProdutoId(){
+async function buscarProdutoId(){
     const idBuscar = document.getElementById("idbuscarproduto").value;
 
-    // if idBuscar vazio {......}
+    if (isNaN(Number(idBuscar)) || idBuscar.trim() === "") {
+        return "";
+    }
 
-    fetch(`http://localhost:8080/produtos/${idBuscar}`, {
+    const res = await fetch(`http://localhost:8080/produtos/${idBuscar}`, {
         method: "GET",
         headers: {
             "Accept" : "application/json",
             "Content-type" : "application/json"
         }
-    })
-    .then(res => {
-        if(!res.ok) throw new Error("Erro ao consultar dados.");
-        return res.json();
-    })
-    .then(data => {
-        console.log("Dados: ", data);
-    })
-    .catch(erro => {
-        console.log("Erro: ", erro)
-    })
+    });
+
+    if(!res.ok){
+        throw new Error("Erro ao consultar dados.");
+    }
+
+    const data = await res.json();
+    return `
+        <tr>
+            <td>${data.id}</td>
+            <td>${data.nome}</td>
+            <td>R$ ${data.valor}</td>
+        </tr>
+    `
 }
 
-function buscarProdutoNome(){
-    const nomeBuscar = document.getElementById("nomebuscarproduto").value;
+async function buscarProdutoNome(){
+    const nomeBuscar = document.getElementById("idbuscarproduto").value;
 
-    // if idBuscar vazio {......}
+    if(!nomeBuscar || nomeBuscar.trim() === ""){
+        return "";
+    }
 
-    fetch(`http://localhost:8080/produtos/buscar/${nomeBuscar}`, {
+
+    const res = await fetch(`http://localhost:8080/produtos/buscar/${nomeBuscar}`, {
         method: "GET",
         headers: {
             "Accept" : "application/json",
             "Content-type" : "application/json"
         }
     })
-    .then(res => {
-        if(!res.ok) throw new Error("Erro ao consultar dados.");
-        return res.json();
-    })
-    .then(data => {
-        console.log("Dados: ", data);
-    })
-    .catch(erro => {
-        console.log("Erro: ", erro)
-    })
+    
+    if(!res.ok){
+        throw new Error("Erro ao consultar dados.");
+    }
+
+    const data = await res.json();
+
+    let tabela = "";
+
+    let linhas = "";
+    for(const el of data){
+        linhas + linhas + "<tr>"
+        linhas = linhas + `<td>${el.id}</td>`
+        linhas = linhas + `<td>${el.nome}</td>`
+        linhas = linhas + `<td>R$ ${el.valor}</td>`
+        linhas = linhas + "</tr>"
+    }
+
+    return linhas;
+
+}
+
+async function buscarProduto(){
+    // if idBuscar vazio {......}
+    const campo = document.getElementById("idbuscarproduto").value;
+
+    if(!campo || campo.trim() === ""){
+        buscarTodosProdutos();
+        return;
+    }
+
+
+    let linhas = await buscarProdutoId() + await buscarProdutoNome();
+    let tabela = document.getElementById("tabelaProdutos");
+
+    tabela.innerHTML = `
+    <h2>Produtos</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Produto</th>
+            <th>Valor</th>
+        </tr>
+        ${linhas}
+    </table>
+    `
 }
 
 function inserirProduto(){

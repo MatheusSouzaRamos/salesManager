@@ -88,3 +88,58 @@ a:hover {
     display: block;
     margin-top: 10px;
 }
+
+.container button:hover {
+    cursor: pointer;
+    transition-duration: 0.5s;
+    padding: 5px;
+    background-color: rgb(155, 250, 155);
+}
+
+.table-clientes, .table-produtos {
+    
+    background-color: white;
+    width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+.table-clientes h2, .table-produtos h2 {
+    margin-top: 20px;
+    font-weight: normal;
+    color: white;
+    background-color: var(--cor2);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    
+}
+
+th, td {
+    /* border: 1px solid #ddd; */
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #2c3e5a;
+    color: white;
+    font-weight: bold;
+}
+
+
+tr:hover {
+    background-color: #e8f4ff;
+}
+
+caption {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}

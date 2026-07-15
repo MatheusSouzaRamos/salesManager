@@ -6,7 +6,7 @@
     <title>Produto</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body onload="buscarTodosProdutos()">
     <header>
         <h1>Sales Manager</h1>
     </header>
@@ -17,15 +17,6 @@
     </nav>
         
     <main>
-        <button onclick="buscarTodosProdutos()">Todos</button>
-        <br>
-        <input type="number" placeholder="id" id="idbuscarproduto">
-        <button onclick="buscarProdutoId()">id</button>
-        <br>
-        <input type="text" placeholder="nome" id="nomebuscarproduto">
-        <button onclick="buscarProdutoNome()">buscar</button>
-
-
 
         <div class="container">
             <div>
@@ -43,9 +34,11 @@
             </div>
         </div>
 
-        <div class="table-produtos" id="tabelaProdutos">
-            <h2>Produtos</h2>
-        </div>
+        <input type="text" placeholder="Buscar" id="idbuscarproduto">
+        <button onclick="buscarProduto()">Buscar</button>
+
+
+        <div class="table-produtos" id="tabelaProdutos"></div>
     </main>
     
     <script src="../js/produto.js"></script>

@@ -6,7 +6,7 @@
     <title>Clientes</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body onload="buscarTodosClientes()">
     <header>
         <h1>Sales Manager</h1>
     </header>
@@ -17,17 +17,6 @@
     </nav>
 
     <main>
-
-        <button onclick="buscarTodosClientes()">Todos</button>
-        <br>
-        <input type="number" placeholder="id" id="idbuscarcliente">
-        <button onclick="buscarClienteId()">id</button>
-        <br>
-        <input type="text" placeholder="nome" id="nomebuscarcliente">
-        <button onclick="buscarClientesNome()">buscar</button>
-        <br>
-
-
         <div class="container">
             <div>
                 <h3>Cadastro</h3>
@@ -45,6 +34,13 @@
                 <button onclick="atualizarCliente()">Editar</button>
             </div>
         </div>
+
+        <input type="number" placeholder="id" id="idbuscarcliente">
+        <button onclick="buscarClienteId()">id</button>
+        <br>
+        <input type="text" placeholder="nome" id="nomebuscarcliente">
+        <button onclick="buscarClientesNome()">buscar</button>
+        <br>
 
         <div class="table-clientes" id="tabelaClientes"></div>
     </main>
