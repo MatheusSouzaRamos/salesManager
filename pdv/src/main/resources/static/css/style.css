@@ -165,16 +165,23 @@ caption {
     margin-bottom: 10px;
 }
 
+.tabelaFlow {
+    max-height: 300px;
+    overflow-x: auto;
+}
+
 .loja div {
     /* background-color: black; */
     width: 500px;
     height: 300px;
+    margin: auto;
 }
 
 .loja{
     margin: auto;
-    width: 1050px;
-    background-color: red;
+    width: 1025px;
+    /* background-color: red; */
+    /* height: 100%; */
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }

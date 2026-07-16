@@ -11,12 +11,19 @@ public class Carrinho {
     }
 
     public void inserirItem(ItemCarrinho item){
+
         for(ItemCarrinho i : carrinho){
             if(i.getProduto().getId().equals(item.getProduto().getId())){
                 i.setQuantidade(i.getQuantidade() + item.getQuantidade());
+
+                if(i.getQuantidade() == 0){
+                    removerItem(i.getProduto().getId());
+                }
+
                 return;
             }
         }
+
         carrinho.add(item);
     }
 
