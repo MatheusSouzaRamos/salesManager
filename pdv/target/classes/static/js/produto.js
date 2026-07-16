@@ -109,14 +109,12 @@ async function buscarProdutoNome(){
 }
 
 async function buscarProduto(){
-    // if idBuscar vazio {......}
     const campo = document.getElementById("idbuscarproduto").value;
 
     if(!campo || campo.trim() === ""){
         buscarTodosProdutos();
         return;
     }
-
 
     let linhas = await buscarProdutoId() + await buscarProdutoNome();
     let tabela = document.getElementById("tabelaProdutos");

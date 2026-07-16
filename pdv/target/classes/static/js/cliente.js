@@ -43,52 +43,101 @@ function buscarTodosClientes(){
     })
 }
 
-function buscarClienteId(){
+async function buscarClienteId(){
     const idBuscar = document.getElementById("idbuscarcliente").value;
+   
+    if (isNaN(Number(idBuscar)) || idBuscar.trim() === "") {
+        return "";
+    }
 
-    // if idBuscar vazio {......}
-
-    fetch(`http://localhost:8080/clientes/${idBuscar}`, {
+    const res = await fetch(`http://localhost:8080/clientes/${idBuscar}`, {
         method: "GET",
         headers: {
             "Accept" : "application/json",
             "Content-type" : "application/json"
         }
     })
-    .then(res => {
-        if(!res.ok) throw new Error("Erro ao consultar dados.");
-        return res.json();
-    })
-    .then(data => {
-        console.log("Dados: ", data);
-    })
-    .catch(erro => {
-        console.log("Erro: ", erro)
-    })
+
+    if(!res.ok) {
+        throw new Error("Erro ao consultar dados.");
+    }
+
+    const data = await res.json();
+    console.log(data);
+
+
+    linhas = `
+        <tr>
+            <td>${data.id}</td>
+            <td>${data.nome}</td>
+            <td>${data.telefone}</td>
+            <td>${data.cpf}</td>
+        </tr>
+    `
+    return linhas;
+
 }
 
-function buscarClientesNome(){
-    const nomeBuscar = document.getElementById("nomebuscarcliente").value;
+async function buscarClientesNome(){
+    const nomeBuscar = document.getElementById("idbuscarcliente").value;
 
-    // if idBuscar vazio {......}
+    if(!nomeBuscar || nomeBuscar.trim() === ""){
+        return "";
+    }
 
-    fetch(`http://localhost:8080/clientes/buscar/${nomeBuscar}`, {
+    const res = await fetch(`http://localhost:8080/clientes/buscar/${nomeBuscar}`, {
         method: "GET",
         headers: {
             "Accept" : "application/json",
             "Content-type" : "application/json"
         }
     })
-    .then(res => {
-        if(!res.ok) throw new Error("Erro ao consultar dados.");
-        return res.json();
-    })
-    .then(data => {
-        console.log("Dados: ", data);
-    })
-    .catch(erro => {
-        console.log("Erro: ", erro)
-    })
+
+    if(!res.ok) {
+        throw new Error("Erro ao consultar dados.");
+    }
+
+    const data = await res.json();
+    console.log(data);
+    linhas = "";
+
+    for(const el of data){
+        linhas = linhas + `
+            <tr>
+                <td>${el.id}</td>
+                <td>${el.nome}</td>
+                <td>${el.telefone}</td>
+                <td>${el.cpf}</td>
+            </tr>
+        `
+    }
+    // console.log("linhas", linhas)
+    return linhas; 
+}
+
+async function buscarClientes(){
+    const campo = document.getElementById("idbuscarcliente").value;
+
+    if(!campo || campo.trim() === ""){
+        buscarTodosClientes();
+        return;
+    }
+
+    let linhas = await buscarClienteId() + await buscarClientesNome();
+    let tabela = document.getElementById("tabelaClientes");
+
+    tabela.innerHTML = `
+        <h2>Clientes</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>CPF</th>
+            </tr>
+            ${linhas}
+        </table>
+    `
 }
 
 function inserirCliente(){

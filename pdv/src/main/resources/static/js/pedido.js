@@ -21,8 +21,6 @@ function buscarTodosPedidos(){
 function buscarPedidoId(){
     const idBuscar = document.getElementById("idbuscarpedido").value;
 
-    // if idBuscar vazio {......}
-
     fetch(`http://localhost:8080/pedidos/${idBuscar}`, {
         method: "GET",
         headers: {
