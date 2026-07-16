@@ -29,13 +29,15 @@
                 <h3>Edição</h3>
                 <input type="number" placeholder="ID" id="ideditarproduto">
                 <input type="text" placeholder="Novo nome" id="nomeeditarproduto">
-                <input type="number" placeholder="Novo  valor" id="valoreditarproduto">
+                <input type="number" placeholder="Novo valor" id="valoreditarproduto">
                 <button onclick="atualizarProduto()">Editar</button>
             </div>
         </div>
 
-        <input type="text" placeholder="Buscar" id="idbuscarproduto">
-        <button onclick="buscarProduto()">Buscar</button>
+        <div class="busca">
+            <input type="text" placeholder="Buscar" id="idbuscarproduto">
+            <button onclick="buscarProduto()">Buscar</button>
+        </div>
 
 
         <div class="table-produtos" id="tabelaProdutos"></div>

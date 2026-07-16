@@ -97,6 +97,26 @@ a:hover {
     background-color: rgb(155, 250, 155);
 }
 
+.busca {
+    margin: auto;
+    /* background-color: red; */
+    width: 200px;
+    margin-top: 10px;
+}
+
+.busca input, .busca button {
+    padding: 3px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.busca button:hover {
+    cursor: pointer;
+    transition-duration: 0.5s;
+    background-color: rgb(155, 250, 155);
+}
+
 .table-clientes, .table-produtos {
     
     background-color: white;
@@ -143,4 +163,18 @@ caption {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
+}
+
+.loja div {
+    /* background-color: black; */
+    width: 500px;
+    height: 300px;
+}
+
+.loja{
+    margin: auto;
+    width: 1050px;
+    background-color: red;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
