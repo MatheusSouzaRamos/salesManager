@@ -165,23 +165,50 @@ caption {
     margin-bottom: 10px;
 }
 
-.tabelaFlow {
-    max-height: 300px;
-    overflow-x: auto;
+.painelCarrinho {
+    width: 500px;
 }
 
-.loja div {
-    /* background-color: black; */
-    width: 500px;
-    height: 300px;
-    margin: auto;
+.tabelaFlow {
+    max-height: 270px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
+
+
 
 .loja{
+    padding-top: 30px;
     margin: auto;
     width: 1025px;
-    /* background-color: red; */
-    /* height: 100%; */
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
+
+.loja h2 {
+    background-color: var(--cor2);
+    color: white;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    
+}
+
+#totaisCarrinho {
+    margin-top: 10px;
+}
+
+#totaisCarrinho p {
+    /* width: 260px; */
+    width: 95%;
+    margin: auto;
+    text-align: center;
+    padding: 5px;
+    color: black;
+    background-color: var(--cor1);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+

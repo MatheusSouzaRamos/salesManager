@@ -18,28 +18,25 @@
 
     <main>
 
-        <div class="busca">
-            <input type="number" placeholder="Buscar ID" id="idbuscarpedido">
-            <button onclick="buscarPedidoId()">id</button>
-        </div>
-        
-        <button onclick="listarCarrinho()">CARRINHO TODO</button>
-        <input type="number" placeholder="ID produto" id="idProdutoCarrinho">
-        <input type="number" placeholder="Quantidade" id="idQuantidadeCarrinho">
-        <button onclick="adicionarCarrinho()">Adcionar</button>
-
-
         <div class="loja">
             <div class="tabelaFlow">
                 <div id="tabelaProdutos"></div>
             </div>
-            <div class="tabelaFlow">
-                <div id="divCarrinho"></div>
+
+            <div class="painelCarrinho">
+                <div class="tabelaFlow">
+                    <div id="divCarrinho"></div>
+                </div>
+
+                <div id="totaisCarrinho"></div>
             </div>
         </div>
 
         
-
+        <div class="busca">
+            <input type="number" placeholder="Buscar ID" id="idbuscarpedido">
+            <button onclick="buscarPedidoId()">id</button>
+        </div>
 
         <div class="tabelaPedidos"></div>
     </main>
