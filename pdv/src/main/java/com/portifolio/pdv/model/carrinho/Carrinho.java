@@ -1,6 +1,7 @@
 package com.portifolio.pdv.model.carrinho;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Carrinho {
@@ -11,20 +12,25 @@ public class Carrinho {
     }
 
     public void inserirItem(ItemCarrinho item){
+        for(Iterator<ItemCarrinho> it = carrinho.iterator(); it.hasNext();){
+            ItemCarrinho c = it.next();
 
-        for(ItemCarrinho i : carrinho){
-            if(i.getProduto().getId().equals(item.getProduto().getId())){
-                i.setQuantidade(i.getQuantidade() + item.getQuantidade());
+            if(c.getProduto().getId().equals(item.getProduto().getId())){
+                long qtd = c.getQuantidade() + item.getQuantidade();
 
-                if(i.getQuantidade() == 0){
-                    removerItem(i.getProduto().getId());
+                if(qtd <= 0 ){
+                    it.remove();;
                 }
-
+                else {
+                    c.setQuantidade(qtd);
+                }
                 return;
             }
         }
 
-        carrinho.add(item);
+        if(item.getQuantidade() > 0){
+            carrinho.add(item);
+        }
     }
 
     public void removerItem(Long id){
@@ -38,5 +44,26 @@ public class Carrinho {
 
     public void limparCarrinho(){
         carrinho.clear();
+    }
+
+    public List<String> getTotais(){
+        if(carrinho.isEmpty()){
+            List<String> lista = new ArrayList<>(List.of("","",""));
+            return lista;
+        }
+
+        double valorTotal = 0;
+        int totalItens = 0;
+        
+        for (ItemCarrinho c : carrinho){
+            valorTotal = valorTotal + (c.getProduto().getValor() *c.getQuantidade());
+            totalItens += c.getQuantidade();
+        }
+        
+        int distintos = carrinho.size();
+
+        List<String> lista = new ArrayList<>(List.of(String.valueOf(valorTotal), String.valueOf(totalItens), String.valueOf(distintos)));
+
+        return lista;
     }
 }

@@ -26,4 +26,8 @@ public class CarrinhoService {
     public void limparCarrinho(){
         carrinho.limparCarrinho();
     }
+
+    public List<String> getTotais(){
+        return carrinho.getTotais();
+    }
 }

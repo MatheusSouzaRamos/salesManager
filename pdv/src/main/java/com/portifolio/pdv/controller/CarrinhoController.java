@@ -52,4 +52,10 @@ public class CarrinhoController {
     public void retirar(@PathVariable Long id){
         service.removerItem(id);
     }
+
+    @GetMapping("/totais")
+    public ResponseEntity<List<String>> getTotais(){
+        List<String> totais = service.getTotais();
+        return ResponseEntity.ok().body(totais);
+    }
 }
