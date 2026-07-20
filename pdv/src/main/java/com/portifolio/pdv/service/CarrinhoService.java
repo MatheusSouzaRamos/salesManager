@@ -30,4 +30,8 @@ public class CarrinhoService {
     public List<String> getTotais(){
         return carrinho.getTotais();
     }
+
+    public void fecharPedido(Long id){
+
+    }
 }

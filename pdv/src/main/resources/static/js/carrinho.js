@@ -73,8 +73,8 @@ async function listarCarrinho(){
         linhas = linhas + `
         <tr>
             <td>${el.produto.nome}</td>
-            <td>${el.produto.valor}</td>
-            <td>${el.quantidade}</td>
+            <td>R$ ${el.produto.valor}</td>
+            <td  style="text-align: center;">${el.quantidade}</td>
             <td><button style="margin: auto; display: block;" onclick="removerCarrinho(${el.produto.id})">-</button></td>
         </tr>`
     }
@@ -129,6 +129,58 @@ async function removerCarrinho(id){
     totaisCarrinho();
 }
 
+async function limparCarrinho(){
+    const res = await fetch("http://localhost:8080/carrinho/limpar", {
+        method: "DELETE",
+        headers : {
+            "Accept": "application/json",
+            "Content-type": "application/json"
+        }
+    })
+    
+    if(!res.ok){
+        throw new Error("Erro ao limpar carrinho.");
+    }
+
+    listarCarrinho();
+
+}
+
+async function listarClientes(){
+    const res = await fetch("http://localhost:8080/clientes", {
+        method: "GET",
+        headers : {
+            "Accept":"application/json",
+            "Content-type": "application/json"
+        }
+    })
+
+    if(!res.ok){
+        throw new Error("Erro ao buscar Clientes.");
+    }
+
+    data = await res.json();
+    const spam = document.getElementById("selecaoCliente");
+
+
+    if(data.length === 0){
+        spam.innerHTML = `<p>Não há clientes cadastrados.</p>`
+    }else{
+        linhas = "";
+
+        for(let el of data){
+            linhas += `<option value = "${el.id}">${el.id} - ${el.nome}</option>`
+        }
+
+        spam.innerHTML += `
+            <select id="selectCliente">
+                ${linhas}
+            </select>
+            <button onclick="fecharPedido()">Fechar Pedido</button>
+        `
+    }
+}
+
 async function totaisCarrinho(){
     const res = await fetch("http://localhost:8080/carrinho/totais", {
         method: "GET",
@@ -145,10 +197,17 @@ async function totaisCarrinho(){
     data = await res.json();
     console.log(data);
 
+    
     let totais = document.getElementById("totaisCarrinho");
     totais.innerHTML = `
-        <p>Total R$ ${data[0]}   Total de Itens: ${data[1]}   Produtos: ${data[2]}</p>
-        
-        ` 
+    <p>Total R$ ${data[0]}   Total de Itens: ${data[1]}   Produtos: ${data[2]} <button onclick="limparCarrinho()">Limpar Carrinho</button></p>
+    <spam id="selecaoCliente" class="selecaoCliente"></spam>
+    ` 
     
+}
+
+async function fecharPedido(){
+    const select = document.getElementById("selectCliente");
+    const id = select.value;
+    console.log(id);
 }

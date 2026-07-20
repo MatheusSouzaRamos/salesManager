@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+
 public class Carrinho {
     private List<ItemCarrinho> carrinho = new ArrayList<>();
 
@@ -48,7 +49,7 @@ public class Carrinho {
 
     public List<String> getTotais(){
         if(carrinho.isEmpty()){
-            List<String> lista = new ArrayList<>(List.of("","",""));
+            List<String> lista = new ArrayList<>(List.of("0","0","0"));
             return lista;
         }
 
@@ -66,4 +67,6 @@ public class Carrinho {
 
         return lista;
     }
+
+ 
 }

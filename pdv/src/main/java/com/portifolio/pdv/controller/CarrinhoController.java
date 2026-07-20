@@ -15,6 +15,7 @@ import com.portifolio.pdv.dto.ProdutoDTO;
 import com.portifolio.pdv.model.Produto;
 import com.portifolio.pdv.model.carrinho.ItemCarrinho;
 import com.portifolio.pdv.service.CarrinhoService;
+import com.portifolio.pdv.service.PedidoService;
 import com.portifolio.pdv.service.ProdutoService;
 
 @RestController
@@ -23,11 +24,13 @@ import com.portifolio.pdv.service.ProdutoService;
 public class CarrinhoController {
     private CarrinhoService service;
     private ProdutoService produtoService;
+    private PedidoService pedidoService;
 
 
-    public CarrinhoController(CarrinhoService service, ProdutoService produtoService){
+    public CarrinhoController(CarrinhoService service, ProdutoService produtoService, PedidoService pedidoService){
         this.service = service;
         this.produtoService = produtoService;
+        this.pedidoService = pedidoService;
     }
 
 
@@ -57,4 +60,11 @@ public class CarrinhoController {
         List<String> totais = service.getTotais();
         return ResponseEntity.ok().body(totais);
     }
+
+    @DeleteMapping("/limpar")
+    public void limparCarrinho(){
+        service.limparCarrinho();
+    }
+
+
 }

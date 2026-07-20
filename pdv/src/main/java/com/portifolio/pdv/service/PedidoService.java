@@ -6,7 +6,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.portifolio.pdv.dto.PedidoDTO;
+import com.portifolio.pdv.dto.ProdutoDTO;
+import com.portifolio.pdv.model.Cliente;
 import com.portifolio.pdv.model.Pedido;
+import com.portifolio.pdv.model.Produto;
 import com.portifolio.pdv.repository.PedidoRepositoy;
 
 @Service
@@ -25,4 +28,5 @@ public class PedidoService {
         }
         return dto;
     }
+
 }
