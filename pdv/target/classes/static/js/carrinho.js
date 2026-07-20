@@ -159,20 +159,20 @@ async function listarClientes(){
         throw new Error("Erro ao buscar Clientes.");
     }
 
-    data = await res.json();
+    const data = await res.json();
     const spam = document.getElementById("selecaoCliente");
 
 
     if(data.length === 0){
         spam.innerHTML = `<p>Não há clientes cadastrados.</p>`
     }else{
-        linhas = "";
+        let linhas = "";
 
         for(let el of data){
             linhas += `<option value = "${el.id}">${el.id} - ${el.nome}</option>`
         }
 
-        spam.innerHTML += `
+        spam.innerHTML = `
             <select id="selectCliente">
                 ${linhas}
             </select>
@@ -194,15 +194,16 @@ async function totaisCarrinho(){
         throw new Error("Erro ao buscar totais do carrinho");
     }
 
-    data = await res.json();
+    const data = await res.json();
     console.log(data);
 
     
     let totais = document.getElementById("totaisCarrinho");
     totais.innerHTML = `
     <p>Total R$ ${data[0]}   Total de Itens: ${data[1]}   Produtos: ${data[2]} <button onclick="limparCarrinho()">Limpar Carrinho</button></p>
-    <spam id="selecaoCliente" class="selecaoCliente"></spam>
     ` 
+    
+    listarClientes();
     
 }
 
