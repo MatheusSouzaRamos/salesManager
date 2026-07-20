@@ -153,6 +153,7 @@ function inserirProduto(){
     })
     .then(data => {
         console.log("Dados: ", data);
+        buscarTodosProdutos();
     })
     .catch(erro => {
         console.log("Erro: ", erro)
@@ -181,6 +182,7 @@ function atualizarProduto(){
     })
     .then(data => {
         console.log("Dados: ", data);
+        buscarTodosProdutos();
     })
     .catch(erro => {
         console.log("Erro: ", erro)

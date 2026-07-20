@@ -67,7 +67,7 @@ public class ClienteService {
         Cliente entity = repository.findById(id).orElseThrow(()-> new EntityNotFoundException("Nao encontrado"));
 
         entity.setNome(dto.getNome());
-        entity.setCpf(dto.getCpf());
+        entity.setCpf(entity.getCpf());
         entity.setTelefone(dto.getTelefone());
         // entity.setPedidos(dto.getPedidos());
         

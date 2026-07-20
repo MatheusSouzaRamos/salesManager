@@ -163,6 +163,7 @@ function inserirCliente(){
     })
     .then(data => {
         console.log("Dados: ", data);
+        buscarTodosClientes();
     })
     .catch(erro => {
         console.log("Erro: ", erro)
@@ -173,7 +174,7 @@ function atualizarCliente(){
     const idAtualizar = document.getElementById("ideditarcliente").value;
     const nomeAtualizar = document.getElementById("nomeeditarcliente").value;
     const telefoneAtualizar = document.getElementById("telefoneeditarcliente").value;
-    const cpfAtualizar = document.getElementById("cpfeditarcliente").value;
+    // const cpfAtualizar = document.getElementById("cpfeditarcliente").value;
 
     fetch(`http://localhost:8080/clientes/${idAtualizar}`, {
         method: "PUT",
@@ -184,7 +185,7 @@ function atualizarCliente(){
         body: JSON.stringify({
             nome: nomeAtualizar,
             telefone: telefoneAtualizar,
-            cpf: cpfAtualizar
+            // cpf: cpfAtualizar
         })
     })
     .then(res => {
@@ -193,6 +194,7 @@ function atualizarCliente(){
     })
     .then(data => {
         console.log("Dados: ", data);
+        buscarTodosClientes();
     })
     .catch(erro => {
         console.log("Erro: ", erro)
