@@ -1,17 +1,16 @@
 package com.portifolio.pdv.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -20,29 +19,31 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "pedidos")
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
+@Table(name = "pedidos")
 public class Pedido {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
-    @JsonIgnore
     private Cliente cliente;
 
-    @ManyToMany
-    @JsonIgnore
-    @JoinTable(
-        name = "pedido_produto",
-        joinColumns = @JoinColumn(name = "pedido_id"),
-        inverseJoinColumns = @JoinColumn(name = "produto_id")
+    @OneToMany(
+        mappedBy = "pedido",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
     )
-    private List<Produto> produtos;
+    private List<ItemPedido> itens = new ArrayList<>();
+
+    public void adicionarItem(ItemPedido item) {
+        item.setPedido(this);
+        this.itens.add(item);
+    }
 }

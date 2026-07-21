@@ -17,12 +17,13 @@ import lombok.Setter;
 @Setter
 public class PedidoDTO {
     private Long id;
-    private Cliente cliente;
-    private List<Produto> produtos;
+    private ClienteDTO cliente;
+    private List<ItemPedidoDTO> itens;
 
-    public PedidoDTO(Pedido p){
-        this.id = p.getId();
-        this.cliente = p.getCliente();
-        this.produtos = p.getProdutos();
+    public PedidoDTO(Pedido pedido) {
+        this.id = pedido.getId();
+        this.cliente = new ClienteDTO(pedido.getCliente());
+
+        this.itens = pedido.getItens().stream().map(ItemPedidoDTO::new).toList();
     }
 }

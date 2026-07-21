@@ -211,4 +211,18 @@ async function fecharPedido(){
     const select = document.getElementById("selectCliente");
     const id = select.value;
     console.log(id);
+
+    const res = await fetch(`http://localhost:8080/carrinho/fechar/${id}`, {
+        method: "POST",
+        headers: {
+            "Accept": "application/json",
+            "Contenty-type": "application/json"
+        }
+    });
+
+    if(!res.ok){
+        throw new Error("Erro ao gravar pedido.");
+    }
+
+    limparCarrinho();
 }

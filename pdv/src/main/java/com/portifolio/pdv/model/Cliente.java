@@ -1,6 +1,9 @@
 package com.portifolio.pdv.model;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,5 +36,6 @@ public class Cliente {
     private String cpf;
 
     @OneToMany(mappedBy = "cliente")
-    private List<Pedido> pedidos;
+    @JsonIgnore
+    private List<Pedido> pedidos = new ArrayList<>();
 }

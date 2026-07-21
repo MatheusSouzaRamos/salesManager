@@ -67,4 +67,13 @@ public class CarrinhoController {
     }
 
 
+    @PostMapping("/fechar/{clienteId}")
+    public ResponseEntity<Void> fecharPedido(@PathVariable Long clienteId) {
+
+        pedidoService.fecharPedido(clienteId, service.findAll());
+
+        service.limparCarrinho();
+
+        return ResponseEntity.ok().build();
+    }
 }
