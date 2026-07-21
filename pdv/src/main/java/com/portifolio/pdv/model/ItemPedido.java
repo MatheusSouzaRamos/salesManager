@@ -1,5 +1,7 @@
 package com.portifolio.pdv.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,10 +28,12 @@ public class ItemPedido {
 
     @ManyToOne
     @JoinColumn(name = "pedido_id")
+    @JsonIgnore
     private Pedido pedido;
 
     @ManyToOne
     @JoinColumn(name = "produto_id")
+    @JsonIgnore
     private Produto produto;
 
     private Long quantidade;
