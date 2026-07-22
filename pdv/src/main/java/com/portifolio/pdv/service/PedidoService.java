@@ -68,4 +68,9 @@ public class PedidoService {
         repository.save(pedido);
     }
 
+    public byte[] gerarPdf(Long id){
+        PedidoDTO dto = this.findById(id);
+        return pdfService.gerarPdf(dto);
+    }
+
 }

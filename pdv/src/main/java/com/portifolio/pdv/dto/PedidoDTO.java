@@ -23,7 +23,14 @@ public class PedidoDTO {
     public PedidoDTO(Pedido pedido) {
         this.id = pedido.getId();
         this.cliente = new ClienteDTO(pedido.getCliente());
-
         this.itens = pedido.getItens().stream().map(ItemPedidoDTO::new).toList();
+    }
+
+    public double getTotal(){
+        double total = 0;
+        for(ItemPedidoDTO item : itens){
+            total += (item.getQuantidade() * item.getValorUnitario());
+        }
+        return total;
     }
 }
