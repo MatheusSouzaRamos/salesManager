@@ -14,6 +14,8 @@ import com.portifolio.pdv.model.Pedido;
 import com.portifolio.pdv.model.carrinho.ItemCarrinho;
 import com.portifolio.pdv.repository.PedidoRepositoy;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class PedidoService {
     private final PedidoRepositoy repository;
@@ -24,12 +26,20 @@ public class PedidoService {
         this.clienteService = clienteService;
     }
 
+    @Transactional(readOnly = true)
     public List<PedidoDTO> findAll(){
         List<Pedido> pedidos = repository.findAll();
         List<PedidoDTO> dto = new ArrayList<>();
         for(Pedido p : pedidos){
             dto.add(new PedidoDTO(p));
         }
+        return dto;
+    }
+
+    @Transactional(readOnly = true)
+    public PedidoDTO findById(Long id){
+        Pedido entity = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Pedido não encontrado."));
+        PedidoDTO dto = new PedidoDTO(entity);
         return dto;
     }
 
