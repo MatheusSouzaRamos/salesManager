@@ -3,6 +3,8 @@ package com.portifolio.pdv.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -56,5 +58,13 @@ public class PedidoController {
                 produtos.add(ic.getProduto());
             }
         }
+    }
+
+    @GetMapping("/pdf/{id}")
+    public ResponseEntity<byte[]> gerarPdf(@PathVariable Long id){
+        byte[] pdf = service.gerarPdf(id);
+
+        
+        return ResponseEntity.ok() .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=pedido.pdf") .contentType(MediaType.APPLICATION_PDF) .body(pdf);
     }
 }

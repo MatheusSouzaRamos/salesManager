@@ -20,10 +20,12 @@ import jakarta.persistence.EntityNotFoundException;
 public class PedidoService {
     private final PedidoRepositoy repository;
     private final ClienteService clienteService;
+    private final PdfService pdfService;
 
-    PedidoService(PedidoRepositoy repository, ClienteService clienteService) {
+    PedidoService(PedidoRepositoy repository, ClienteService clienteService, PdfService pdfService) {
         this.repository = repository;
         this.clienteService = clienteService;
+        this.pdfService = pdfService;
     }
 
     @Transactional(readOnly = true)
