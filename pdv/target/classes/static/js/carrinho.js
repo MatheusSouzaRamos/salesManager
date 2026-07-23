@@ -225,4 +225,5 @@ async function fecharPedido(){
     }
 
     limparCarrinho();
+    buscarTodosPedidos();
 }

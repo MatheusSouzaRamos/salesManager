@@ -136,6 +136,16 @@ function inserirProduto(){
     const nomeInserir = document.getElementById("nomeinserirproduto").value;
     const valorInserir = document.getElementById("valorinserirproduto").value;
 
+    if(!nomeInserir || nomeInserir === ""){
+        alert("Nome inválido");
+        return;
+    }
+
+    if(!valorInserir || valorInserir === ""){
+        alert("Valor inválido");
+        return;
+    }
+
     fetch("http://localhost:8080/produtos", {
         method: "POST",
         headers: {
@@ -164,6 +174,21 @@ function atualizarProduto(){
     const idAtualizar = document.getElementById("ideditarproduto").value;
     const nomeAtualizar = document.getElementById("nomeeditarproduto").value;
     const valorAtualizar = document.getElementById("valoreditarproduto").value;
+
+    if(!idAtualizar || idAtualizar.trim() === ""){
+        alert("ID inválido");
+        return;
+    }
+
+    if(!nomeAtualizar || nomeAtualizar.trim() === ""){
+        alert("Nome inválido");
+        return;
+    }
+
+    if(!valorAtualizar || valorAtualizar.trim() === ""){
+        alert("Valor inválido");
+        return;
+    }
 
     fetch(`http://localhost:8080/produtos/${idAtualizar}`, {
         method: "PUT",

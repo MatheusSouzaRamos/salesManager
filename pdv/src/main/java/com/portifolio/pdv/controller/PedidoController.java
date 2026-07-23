@@ -42,6 +42,12 @@ public class PedidoController {
         return ResponseEntity.ok().body(dto);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<PedidoDTO> findById(@PathVariable Long id){
+        PedidoDTO dto = service.findById(id);
+        return ResponseEntity.ok().body(dto);
+    }
+
     @PostMapping("/inserirPedido/{id}")
     public void inserirPedido(@PathVariable Long id, @RequestBody Carrinho carrinho){
         ClienteDTO clienteDTO = clienteService.findById(id);
@@ -63,8 +69,6 @@ public class PedidoController {
     @GetMapping("/pdf/{id}")
     public ResponseEntity<byte[]> gerarPdf(@PathVariable Long id){
         byte[] pdf = service.gerarPdf(id);
-
-        
         return ResponseEntity.ok() .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=pedido.pdf") .contentType(MediaType.APPLICATION_PDF) .body(pdf);
     }
 }

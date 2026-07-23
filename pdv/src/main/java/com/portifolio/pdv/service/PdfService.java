@@ -3,6 +3,8 @@ package com.portifolio.pdv.service;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.lowagie.text.Document;
 import com.lowagie.text.Element;
 import com.lowagie.text.Font;
@@ -17,13 +19,14 @@ import com.portifolio.pdv.dto.ClienteDTO;
 import com.portifolio.pdv.dto.ItemPedidoDTO;
 import com.portifolio.pdv.dto.PedidoDTO;
 
-
+@Service
 public class PdfService {
-
     private PdfPCell cabecalho(String texto){
         Font fonte = FontFactory.getFont(FontFactory.HELVETICA_BOLD,10);
         PdfPCell cell = new PdfPCell(new Phrase(texto, fonte));
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        cell.setPadding(5);
         return cell;
     }
 
@@ -57,7 +60,10 @@ public class PdfService {
         p3.setAlignment(Element.ALIGN_CENTER);
         document.add(p3);
 
-        document.add(new Paragraph("------------------------------------------------------------"));
+        Paragraph pp = new Paragraph("------------------------------------------------------------");
+        pp.setAlignment(Element.ALIGN_CENTER);
+        document.add(pp);
+
 
         Paragraph p4 = new Paragraph("CLIENTE: ID:" + cliente.getId() + " NOME: " + cliente.getNome(), normal);
         p4.setAlignment(Element.ALIGN_CENTER);
@@ -66,6 +72,10 @@ public class PdfService {
         Paragraph p5 = new Paragraph("CPF: " + cliente.getCpf() + " Telefone: " + cliente.getTelefone());
         p5.setAlignment(Element.ALIGN_CENTER);
         document.add(p5);
+
+        document.add(new Paragraph(""));
+        
+        // document.add(new LineSeparator());
 
         PdfPTable tabela = new PdfPTable(4);
         tabela.setWidthPercentage(100);
@@ -77,11 +87,14 @@ public class PdfService {
         tabela.addCell(cabecalho("TOTAL"));
 
         for(ItemPedidoDTO item : itens){
-            tabela.addCell(item.getProduto().getNome());
-            tabela.addCell(item.getQuantidade().toString());
-            tabela.addCell("R$ " + String.valueOf(item.getValorUnitario()));
-            tabela.addCell("R$" + String.valueOf(item.getValorUnitario() * item.getQuantidade()));
-        }        
+            tabela.addCell(new Phrase(item.getProduto().getNome()));
+            tabela.addCell(new Phrase(item.getQuantidade().toString()));
+            tabela.addCell(new Phrase("R$ " + String.valueOf(item.getValorUnitario())));
+            tabela.addCell(new Phrase("R$" + String.valueOf(item.getValorUnitario() * item.getQuantidade())));
+        }
+        
+        tabela.setSpacingBefore(15f);
+        tabela.setSpacingAfter(10f);
 
         document.add(tabela);
 
@@ -92,7 +105,7 @@ public class PdfService {
         document.add(new Paragraph(""));
         document.add(new Paragraph(""));
 
-        Paragraph p7 = new Paragraph("OBRIGADO PELA PREFERÊNCIA");
+        Paragraph p7 = new Paragraph("OBRIGADO PELA PREFERÊNCIA! VOLTE SEMPRE.");
         p7.setAlignment(Element.ALIGN_CENTER);
         document.add(p7);
 

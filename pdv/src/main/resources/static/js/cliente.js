@@ -145,6 +145,21 @@ function inserirCliente(){
     const telefoneInserir = document.getElementById("telefoneinserircliente").value;
     const cpfInserir = document.getElementById("cpfinserircliente").value;
 
+    if(nomeInserir.trim() === "" || !nomeInserir){
+        alert("Nome inválido.");
+        return;
+    }
+
+    if(telefoneInserir.trim() === "" || !telefoneInserir){
+        alert("Telefone inválido.");
+        return;
+    }
+
+    if(cpfInserir.trim() === "" || !cpfInserir){
+        alert("CPF inválido.");
+        return;
+    }
+
     fetch("http://localhost:8080/clientes", {
         method: "POST",
         headers: {
@@ -175,6 +190,18 @@ function atualizarCliente(){
     const nomeAtualizar = document.getElementById("nomeeditarcliente").value;
     const telefoneAtualizar = document.getElementById("telefoneeditarcliente").value;
     // const cpfAtualizar = document.getElementById("cpfeditarcliente").value;
+
+    if(!idAtualizar || idAtualizar.trim() === ""){
+        alert("ID inválido.");
+    }
+
+    if(!nomeAtualizar || nomeAtualizar.trim() === ""){
+        alert("Nome inválido.");
+    }
+
+    if(!telefoneAtualizar || telefoneAtualizar.trim() === ""){
+        alert("Telefone inválido.");
+    }
 
     fetch(`http://localhost:8080/clientes/${idAtualizar}`, {
         method: "PUT",

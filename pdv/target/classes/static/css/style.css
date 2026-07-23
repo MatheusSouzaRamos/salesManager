@@ -117,12 +117,15 @@ a:hover {
     background-color: rgb(155, 250, 155);
 }
 
-.table-clientes, .table-produtos {
-    
+.table-clientes, .table-produtos, .table-pedidos {
     background-color: white;
     width: 500px;
     margin: auto;
     text-align: center;
+}
+
+.table-pedidos {
+    width: 800px;
 }
 
 .table-clientes h2, .table-produtos h2 {

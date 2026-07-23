@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body onload="buscarTodosProdutosCarrinho(); listarCarrinho()">
+<body onload="buscarTodosProdutosCarrinho(); listarCarrinho(); buscarTodosPedidos()">
     <header>
         <h1>Sales Manager</h1>
     </header>
@@ -39,13 +39,12 @@
         
         <div class="busca">
             <input type="number" placeholder="Buscar ID" id="idbuscarpedido">
-            <button onclick="buscarPedidoId()">id</button>
+            <button onclick="buscarPedidoId()">Buscar</button>
         </div>
+        
+        <div class="table-pedidos" id="tabelaPedidos" style="margin-top: 10px;"></div>
 
         
-        <button onclick="buscarTodosPedidos()">AAAAAAAAAAA</button>
-        
-        <div class="table-pedidos" id="tabelaPedidos"></div>
 
     </main>
 
