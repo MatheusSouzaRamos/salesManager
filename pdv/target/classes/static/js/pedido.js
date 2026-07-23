@@ -34,7 +34,7 @@ async function buscarTodosPedidos(){
             <tr>
                 <td>${el.id}</td>
                 <td>${el.cliente.id} - ${el.cliente.nome}</td>
-                <td style="text-align: center;">R$ ${valorTotal}</td>
+                <td style="text-align: center;">R$ ${valorTotal.toFixed(2)}</td>
                 <td style="text-align: center;"><button onclick="pdfPedido(${el.cliente.id})">Imprimir Pedido</button></td>
 
             </tr>
@@ -87,7 +87,7 @@ async function buscarPedidoId(){
         <tr>
             <td>${data.id}</td>
             <td>${data.cliente.id} - ${data.cliente.nome}</td>
-            <td style="text-align: center;">R$ ${valorTotal}</td>
+            <td style="text-align: center;">R$ ${valorTotal.toFixed(2)}</td>
             <td style="text-align: center;"><button onclick="pdfPedido(${data.cliente.id})">Imprimir Pedido</button></td>
         </tr>
     `

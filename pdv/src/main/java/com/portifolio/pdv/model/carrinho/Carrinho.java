@@ -63,7 +63,7 @@ public class Carrinho {
         
         int distintos = carrinho.size();
 
-        List<String> lista = new ArrayList<>(List.of(String.valueOf(valorTotal), String.valueOf(totalItens), String.valueOf(distintos)));
+        List<String> lista = new ArrayList<>(List.of(String.valueOf(String.format("%.2f", valorTotal)), String.valueOf(totalItens), String.valueOf(distintos)));
 
         return lista;
     }

@@ -21,15 +21,15 @@
             <div>
                 <h3>Cadastro</h3>
                 <input type="text" placeholder="Nome" id="nomeinserircliente">
-                <input type="text" placeholder="Telefone" id="telefoneinserircliente">
-                <input type="text" placeholder="CPF" id="cpfinserircliente">
+                <input type="text" placeholder="Telefone" id="telefoneinserircliente" min="0">
+                <input type="text" placeholder="CPF" id="cpfinserircliente" min="0">
                 <button onclick="inserirCliente()">Cadastrar</button>
             </div>
             <div>
                 <h3>Edição</h3>
                 <input type="number" placeholder="ID" id="ideditarcliente">
                 <input type="text" placeholder="Novo nome" id="nomeeditarcliente">
-                <input type="text" placeholder="Novo telefone" id="telefoneeditarcliente">
+                <input type="text" placeholder="Novo telefone" id="telefoneeditarcliente" min="0">
                 <!-- <input type="text" placeholder="cpf" id="cpfeditarcliente"> -->
                 <button onclick="atualizarCliente()">Editar</button>
             </div>
