@@ -89,8 +89,8 @@ public class PdfService {
         for(ItemPedidoDTO item : itens){
             tabela.addCell(new Phrase(item.getProduto().getNome()));
             tabela.addCell(new Phrase(item.getQuantidade().toString()));
-            tabela.addCell(new Phrase("R$ " + String.valueOf(item.getValorUnitario())));
-            tabela.addCell(new Phrase("R$" + String.valueOf(item.getValorUnitario() * item.getQuantidade())));
+            tabela.addCell(new Phrase("R$ " + String.format("%.2f", item.getValorUnitario())));
+            tabela.addCell(new Phrase("R$" + String.format("%.2f", item.getValorUnitario() * item.getQuantidade())));
         }
         
         tabela.setSpacingBefore(15f);
@@ -98,7 +98,7 @@ public class PdfService {
 
         document.add(tabela);
 
-        Paragraph p6 = new Paragraph("TOTAL: R$ " + dto.getTotal(), normal);
+        Paragraph p6 = new Paragraph("TOTAL: R$ " + String.format("%.2f", dto.getTotal()), normal);
         p6.setAlignment(Element.ALIGN_CENTER);
         document.add(p6);
 
